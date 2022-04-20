@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
 table {
+	margin-top: 20px;
 	text-align: center;
+	width: 1000px;
+	border: 1px solid red;
+	border-collapse: collapse;
+
+}
+
+.oneTr {
+	font-weight: bold;
+	margin: 10px;
 }

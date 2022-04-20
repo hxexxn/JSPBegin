@@ -32,10 +32,11 @@
 	%>
 	
 	<p>관리자로 로그인했습니다.</p>
-	<form action="#">
-		<input type="button" value="회원정보 수정"><br>
-		<input type="button" value="회원정보 삭제">
-	</form>
+
+		<input type="button" value="회원정보 수정" onclick="location.href='userModify.jsp'"><br>
+		<input type="button" value="회원정보 삭제" onclick="location.href='userDelete.jsp'"><br>
+		<button type="button" onclick="location.href='board.jsp'">게시판으로 가기</button>
+
 	
 	<% 
 		} else {

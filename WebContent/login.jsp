@@ -12,7 +12,7 @@
 <body>
 
 
-	<form id="loginForm">
+	<form id="loginForm" action="neoLoginProccess.jsp" method="get">
 		
 		<table border="1">
 			<tr>

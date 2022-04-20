@@ -79,6 +79,7 @@ $(function(){
 
 	$('#loginBtn').click(function (e){
 		
+		var formTag = $('#loginForm');
 		
 		var user_id = $('#user_id').val();
 		var user_pw = $('#user_pw').val();
@@ -93,10 +94,12 @@ $(function(){
 			return;
 		}
 		
-		$.ajax({
+		loginForm.submit();
+		
+		/*$.ajax({
 			url : "newLoginProccess.jsp",
 			type : "post",
-			data : {user_id:user_id,
+			data : {abc:user_id,
 					user_pw:user_pw},
 			success : function(data){
 
@@ -111,8 +114,70 @@ $(function(){
 							"message : " + request.responseText + "\n" +
 							"error : " + error);
 			}
-		});
+		});*/
 			
 		
-	})	
+	})
+	
+	/* 게시판 JS */
+	
+	$('#boardRegBtn').click(function(){
+		
+		var boardRegForm = $('#boardRegForm');
+		
+		var bTitle = $('#bTitle').val();
+		var bContent = $('#bContent').val();
+		var bWriter = $('#bWriter').val();
+		
+		
+		if (bTitle == null || bTitle.trim() == "") {
+			alert('제목을 입력해주세요.');
+			return;
+		}
+		
+		if (bContent == null || bContent.trim() == "") {
+			alert('내용을 입력해주세요.');
+			return;
+		}
+		
+		if (bWriter == null || bWriter.trim() == "") {
+			alert('작성자 명을 입력해주세요.');
+			return;
+		}
+		
+		boardRegForm.submit();
+	})
+	
+	/* 게시판 삭제 */
+	
+/*	$('#delBtn').click(function(){
+		
+		
+	})*/
+	
+	/* 게시판 수정 */
+	
+	$('#boardModifyBtn').click(function(){
+		
+		var modiForm = $('#modiForm');
+		
+		var modibTitle = $('#bTitle').val();
+		var modibContent = $('#bContent').val();
+		
+		if (modibTitle == null || modibTitle.trim() == "") {
+			alert ('제목을 입력해주세요.');
+			return;
+		}
+		
+		if (modibContent == null || modibContent.trim() == "") {
+			alert ('내용을 입력해주세요.');
+			return;
+		}
+		
+		modiForm.submit();
+		
+	})
+	
+	
+		
 })

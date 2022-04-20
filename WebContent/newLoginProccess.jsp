@@ -4,7 +4,7 @@
   
 <% 
 
-	String user_id = request.getParameter("user_id");
+	String user_id = request.getParameter("abc");
 	
 	String user_pw = request.getParameter("user_pw");
 	
