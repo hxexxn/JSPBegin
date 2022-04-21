@@ -1,8 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="model.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="service.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    <%
+    BoardDAO dao = new BoardDAO();
+	List<BoardDTO> list = dao.boardSelect();
+    request.setAttribute("list", list);
+    %>
   
 <!DOCTYPE html>
 <html>
@@ -25,14 +34,27 @@
 			<td>작성자</td>
 			<td>작성일</td>		
 		</tr>
-	
-	<% 
 		
-	BoardDAO dao = new BoardDAO();
-	List<BoardDTO> list = dao.boardSelect();
+		<c:forEach var="dto" items="${list}">
+		
+			<tr>
+				<td>${dto.bNoa}</td>
+		
+				<td><a href="boardContent.jsp?bNo=${dto.bNo}">${dto.bTitle}</a></td>
+
+				<td>${dto.bWriter}</td>
+
+				<td>
+				<fmt:formatDate value="${dto.bRegData}" pattern="MM-dd"/>
+				</td>
+			</tr>
+		
+		</c:forEach>
+	
+<%-- 	<% 
 	for (BoardDTO dto : list) {
-	%>
-	<tr>
+	%> --%>
+<%-- 	<tr>
 		<td>
 		<%=dto.getbNo()%>
 		</td>
@@ -45,12 +67,12 @@
 		<td>
 		<%=dto.getbRegData()%>
 		</td>
-		</tr>	
-	<% } %>
+		</tr>
+	<% } %>	 --%>
 	</table>
 
 
 
-<script type="text/javascript" src="js/mine.js"></script>
+<script type="text/javascript" src="/JSPBegin/js/mine.js"></script>
 </body>
 </html>

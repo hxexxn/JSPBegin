@@ -178,6 +178,21 @@ $(function(){
 		
 	})
 	
+	$('#userModifyBtn').click(function(){
+		
+		var userModiForm = $('#userModiForm');
+		
+		var modiPW = $('#userPW').val();
+		
+		if (modiPW == null || modiPW.trim() == "") {
+			alert('비밀번호를 입력해주세요.');
+			return;
+		}
+		
+		userModiForm.submit();
+		
+	})
+	
 	
 		
 })

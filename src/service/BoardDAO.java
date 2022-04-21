@@ -1,5 +1,8 @@
 package service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -174,5 +177,19 @@ public class BoardDAO {
 		}
 		
 	}
+	
+	public void upload(File file) {
+	      String sql = "insert into imgTBL(img) values(?)";
+	      try {
+	         FileInputStream fis = new FileInputStream(file);
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setBinaryStream(1, fis);
+	         pstmt.executeUpdate();
+	         dbClose();
+	      } catch (Exception e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	   }
 
 }
